@@ -27,7 +27,7 @@ const FEATURES = [
 ] as const;
 
 function Index() {
-  const leader = rankStandings(STANDINGS)[0];
+  const leader = rankStandings(STANDINGS)[0]!;
   const next = MATCHES.find((m) => m.status === "a-venir");
   const played = MATCHES.filter((m) => m.status === "termine");
   const goals = played.reduce((acc, m) => acc + (m.score ? m.score[0] + m.score[1] : 0), 0);

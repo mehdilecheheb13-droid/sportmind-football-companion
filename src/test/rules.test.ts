@@ -9,7 +9,7 @@ describe("classement", () => {
   });
 
   it("Manchester City est en tête du classement de démo", () => {
-    expect(rankStandings(STANDINGS)[0].team).toBe("Manchester City");
+    expect(rankStandings(STANDINGS)[0]?.team).toBe("Manchester City");
   });
 });
 

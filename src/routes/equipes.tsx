@@ -17,13 +17,13 @@ export const Route = createFileRoute("/equipes")({
 });
 
 function Equipes() {
-  const [selected, setSelected] = useState(TEAMS[0].id);
+  const [selected, setSelected] = useState(TEAMS[0]!.id);
   const hash = useLocation({ select: (l) => l.hash });
   useEffect(() => {
     if (hash && TEAMS.some((t) => t.id === hash)) setSelected(hash);
   }, [hash]);
   const team = TEAMS.find((t) => t.id === selected)!;
-  const stats = TEAM_STATS[team.id];
+  const stats = TEAM_STATS[team.id]!;
 
   return (
     <PageShell>

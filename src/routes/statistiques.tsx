@@ -66,7 +66,7 @@ function Statistiques() {
 
   const compare = TEAMS.map((t) => ({ name: t.short, ...TEAM_STATS[t.id] }));
   const metricLabel = { goals: "Buts marqués", possession: "Possession (%)", passAccuracy: "Précision des passes (%)" }[metric];
-  const totals = TEAMS.map((t) => TEAM_STATS[t.id].goals).reduce((a, b) => a + b, 0);
+  const totals = TEAMS.map((t) => TEAM_STATS[t.id]!.goals).reduce((a, b) => a + b, 0);
 
   return (
     <PageShell>
@@ -140,7 +140,7 @@ function Statistiques() {
           <p className="text-sm text-muted-foreground">Note sur 100 (évaluation fictive)</p>
           <div className="mt-4 h-72">
             <ResponsiveContainer>
-              <RadarChart data={TEAM_STATS[radarTeam].radar} outerRadius="72%">
+              <RadarChart data={TEAM_STATS[radarTeam]!.radar} outerRadius="72%">
                 <PolarGrid stroke="var(--border)" />
                 <PolarAngleAxis dataKey="axe" tick={{ fill: "var(--muted-foreground)", fontSize: 11 }} />
                 <Radar dataKey="value" name="Note" stroke="var(--pitch)" fill="var(--primary)" fillOpacity={0.45} />

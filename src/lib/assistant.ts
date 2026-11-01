@@ -52,7 +52,7 @@ export function replyTo(input: string): string {
     if (team) {
       const pos = ranked.findIndex((r) => r.teamId === team.id);
       if (pos >= 0) {
-        const row = ranked[pos];
+        const row = ranked[pos]!;
         return `${team.name} est ${pos + 1}${pos === 0 ? "er" : "e"} du classement de démo avec ${points(row)} points (${row.won}V ${row.drawn}N ${row.lost}D).`;
       }
     }
@@ -65,7 +65,7 @@ export function replyTo(input: string): string {
       (m) => m.status === "a-venir" && (!team || m.home === team.id || m.away === team.id),
     );
     if (!upcoming.length) return "Aucun match à venir trouvé dans les données de démo.";
-    const m = upcoming[0];
+    const m = upcoming[0]!;
     return `Prochain match${team ? ` de ${team.name}` : ""} (démo) : ${nameOf(m.home)} – ${nameOf(m.away)}, ${fmtDate(m.date)} au ${m.venue}.`;
   }
 
