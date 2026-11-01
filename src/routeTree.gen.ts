@@ -10,33 +10,102 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AssistantRouteImport } from './routes/assistant'
+import { Route as ClassementsRouteImport } from './routes/classements'
+import { Route as EquipesRouteImport } from './routes/equipes'
+import { Route as MatchsRouteImport } from './routes/matchs'
+import { Route as StatistiquesRouteImport } from './routes/statistiques'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AssistantRoute = AssistantRouteImport.update({
+  id: '/assistant',
+  path: '/assistant',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClassementsRoute = ClassementsRouteImport.update({
+  id: '/classements',
+  path: '/classements',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EquipesRoute = EquipesRouteImport.update({
+  id: '/equipes',
+  path: '/equipes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MatchsRoute = MatchsRouteImport.update({
+  id: '/matchs',
+  path: '/matchs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StatistiquesRoute = StatistiquesRouteImport.update({
+  id: '/statistiques',
+  path: '/statistiques',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/assistant': typeof AssistantRoute
+  '/classements': typeof ClassementsRoute
+  '/equipes': typeof EquipesRoute
+  '/matchs': typeof MatchsRoute
+  '/statistiques': typeof StatistiquesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/assistant': typeof AssistantRoute
+  '/classements': typeof ClassementsRoute
+  '/equipes': typeof EquipesRoute
+  '/matchs': typeof MatchsRoute
+  '/statistiques': typeof StatistiquesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/assistant': typeof AssistantRoute
+  '/classements': typeof ClassementsRoute
+  '/equipes': typeof EquipesRoute
+  '/matchs': typeof MatchsRoute
+  '/statistiques': typeof StatistiquesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/assistant'
+    | '/classements'
+    | '/equipes'
+    | '/matchs'
+    | '/statistiques'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/assistant'
+    | '/classements'
+    | '/equipes'
+    | '/matchs'
+    | '/statistiques'
+  id:
+    | '__root__'
+    | '/'
+    | '/assistant'
+    | '/classements'
+    | '/equipes'
+    | '/matchs'
+    | '/statistiques'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AssistantRoute: typeof AssistantRoute
+  ClassementsRoute: typeof ClassementsRoute
+  EquipesRoute: typeof EquipesRoute
+  MatchsRoute: typeof MatchsRoute
+  StatistiquesRoute: typeof StatistiquesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +117,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/assistant': {
+      id: '/assistant'
+      path: '/assistant'
+      fullPath: '/assistant'
+      preLoaderRoute: typeof AssistantRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/classements': {
+      id: '/classements'
+      path: '/classements'
+      fullPath: '/classements'
+      preLoaderRoute: typeof ClassementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/equipes': {
+      id: '/equipes'
+      path: '/equipes'
+      fullPath: '/equipes'
+      preLoaderRoute: typeof EquipesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/matchs': {
+      id: '/matchs'
+      path: '/matchs'
+      fullPath: '/matchs'
+      preLoaderRoute: typeof MatchsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/statistiques': {
+      id: '/statistiques'
+      path: '/statistiques'
+      fullPath: '/statistiques'
+      preLoaderRoute: typeof StatistiquesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AssistantRoute: AssistantRoute,
+  ClassementsRoute: ClassementsRoute,
+  EquipesRoute: EquipesRoute,
+  MatchsRoute: MatchsRoute,
+  StatistiquesRoute: StatistiquesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
