@@ -39,7 +39,7 @@ export function PageHeader({
 }
 
 /** Écusson stylisé (pas de logo officiel) aux couleurs du club. */
-export function TeamCrest({ team, size = "md" }: { team?: Team; size?: "sm" | "md" | "lg" }) {
+export function TeamCrest({ team, size = "md" }: { team?: Team | undefined; size?: "sm" | "md" | "lg" }) {
   const dims = { sm: "size-8 text-[10px]", md: "size-11 text-xs", lg: "size-16 text-sm" }[size];
   if (!team) {
     return (
