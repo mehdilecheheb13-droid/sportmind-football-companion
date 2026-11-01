@@ -41,6 +41,10 @@ export function replyTo(input: string): string {
     return "Bonjour ! Je suis l'assistant de démonstration SportMind. Demandez-moi une équipe, le classement, les prochains matchs ou les meilleurs buteurs.";
   }
 
+  if (/(pronostic|prediction|predire|gagner|qui va)/.test(t)) {
+    return "Je ne fais pas de vrais pronostics : aucun modèle prédictif n'est connecté à ce prototype. Je peux en revanche comparer les statistiques de démo de deux équipes.";
+  }
+
   const team = findTeam(t);
 
   if (/(classement|leader|premier|tete|table)/.test(t)) {
@@ -67,10 +71,6 @@ export function replyTo(input: string): string {
 
   if (/(buteur|but|marque|attaque)/.test(t) && !team) {
     return "Meilleur buteur de démo : Attaquant A (RMA) avec 11 buts. Le FC Barcelona possède l'attaque la plus prolifique (30 buts).";
-  }
-
-  if (/(pronostic|prediction|predire|gagner|qui va)/.test(t)) {
-    return "Je ne fais pas de vrais pronostics : aucun modèle prédictif n'est connecté à ce prototype. Je peux en revanche comparer les statistiques de démo de deux équipes.";
   }
 
   if (team) {
